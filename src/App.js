@@ -1,54 +1,64 @@
 import React from 'react';
-import { Breadcrumb, Layout, Menu, theme, Avatar } from 'antd';
+import { Layout, Menu, theme, Avatar } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
 const items = [
     {
-        key: '1',
+        key: 'home',
         label: 'Home',
     },
     {
-        key: '2',
+        key: 'skills',
         label: 'Skills',
     },
     {
-        key: '3',
+        key: 'projects',
         label: 'Projects',
     },
     {
-        key: '4',
+        key: 'blog',
         label: 'Blog',
     },
     {
-        key: '5',
+        key: 'contact',
         label: 'Contact',
     },
-]
+];
 
 const App: React.FC = () => {
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <Layout>
             <Header style={{
                 display: 'flex',
                 alignItems: 'center',
-                padding: '0 24px'
+                padding: '0 24px',
+                position: 'fixed',
+                width: '100%',
+                zIndex: 1,
             }}>
-
                 <Menu
                     theme="dark"
                     mode="horizontal"
-                    defaultSelectedKeys={['1']}
+                    defaultSelectedKeys={['home']}
                     items={items}
                     style={{
                         flex: 1,
                         minWidth: 0,
                         justifyContent: 'flex-end'
                     }}
+                    onClick={({ key }) => scrollToSection(key)}
                 />
                 <Avatar
                     size={50}
@@ -61,18 +71,69 @@ const App: React.FC = () => {
                     Logo
                 </Avatar>
             </Header>
-            <Content>
-                <div
+
+            <Content style={{ marginTop: 64 }}>
+                <section
+                    id="home"
                     style={{
+                        minHeight: '100vh',
+                        padding: '24px',
                         background: colorBgContainer,
-                        minHeight: 280,
-                        padding: 24,
-                        borderRadius: borderRadiusLG,
                     }}
                 >
-                    Content
-                </div>
+                    <h1>Home Section</h1>
+                    {/* Add your home content here */}
+                </section>
+
+                <section
+                    id="skills"
+                    style={{
+                        minHeight: '100vh',
+                        padding: '24px',
+                        background: colorBgContainer,
+                    }}
+                >
+                    <h1>Skills Section</h1>
+                    {/* Add your skills content here */}
+                </section>
+
+                <section
+                    id="projects"
+                    style={{
+                        minHeight: '100vh',
+                        padding: '24px',
+                        background: colorBgContainer,
+                    }}
+                >
+                    <h1>Projects Section</h1>
+                    {/* Add your projects content here */}
+                </section>
+
+                <section
+                    id="blog"
+                    style={{
+                        minHeight: '100vh',
+                        padding: '24px',
+                        background: colorBgContainer,
+                    }}
+                >
+                    <h1>Blog Section</h1>
+                    {/* Add your blog content here */}
+                </section>
+
+                <section
+                    id="contact"
+                    style={{
+                        minHeight: '100vh',
+                        padding: '24px',
+                        background: colorBgContainer,
+                    }}
+                >
+                    <h1>Contact Section</h1>
+                    {/* Add your contact content here */}
+                </section>
             </Content>
+
             <Footer style={{ textAlign: 'center' }}>
                 Ant Design ©{new Date().getFullYear()} Created by Ant UED
             </Footer>
