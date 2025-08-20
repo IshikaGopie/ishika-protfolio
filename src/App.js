@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Avatar } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
@@ -33,8 +33,12 @@ const App: React.FC = () => {
 
     return (
         <Layout>
-            <Header style={{ display: 'flex', alignItems: 'center' }}>
-                <div className="demo-logo" />
+            <Header style={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: '0 24px'
+            }}>
+
                 <Menu
                     theme="dark"
                     mode="horizontal"
@@ -43,11 +47,21 @@ const App: React.FC = () => {
                     style={{
                         flex: 1,
                         minWidth: 0,
-                        justifyContent: 'flex-end' // This will right-align the menu items
+                        justifyContent: 'flex-end'
                     }}
                 />
+                <Avatar
+                    size={50}
+                    src="/path-to-your-logo.png"
+                    style={{
+                        marginLeft: 24,
+                        backgroundColor: '#1890ff'
+                    }}
+                >
+                    Logo
+                </Avatar>
             </Header>
-            <Content style={{ padding: '0 48px' }}>
+            <Content>
                 <div
                     style={{
                         background: colorBgContainer,
