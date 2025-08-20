@@ -91,16 +91,18 @@ const App: React.FC = () => {
                     style={{
                         position: 'fixed',
                         height: '100vh',
-                        zIndex: 2,
+                        zIndex: 1,
                     }}
                 >
                     <div style={{ padding: '24px', textAlign: 'center' }}>
                         <Avatar
+
                             size={50}
                             src="/path-to-your-logo.png"
                             style={{
                                 backgroundColor: '#1890ff',
-                                marginBottom: 16
+                                marginBottom: 0,
+                                marginTop: 65,
                             }}
                         >
                             Logo
