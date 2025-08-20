@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout, Menu, theme, Avatar } from 'antd';
 
 const { Header, Content, Footer } = Layout;
@@ -31,6 +31,33 @@ const App: React.FC = () => {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
+    const [activeSection, setActiveSection] = useState('home');
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = items.map(item => document.getElementById(item.key));
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+            sections.forEach((section) => {
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        setActiveSection(section.id);
+                    }
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     const scrollToSection = (sectionId: string) => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -51,7 +78,7 @@ const App: React.FC = () => {
                 <Menu
                     theme="dark"
                     mode="horizontal"
-                    defaultSelectedKeys={['home']}
+                    selectedKeys={[activeSection]}
                     items={items}
                     style={{
                         flex: 1,
@@ -73,65 +100,20 @@ const App: React.FC = () => {
             </Header>
 
             <Content style={{ marginTop: 64 }}>
-                <section
-                    id="home"
-                    style={{
-                        minHeight: '100vh',
-                        padding: '24px',
-                        background: colorBgContainer,
-                    }}
-                >
-                    <h1>Home Section</h1>
-                    {/* Add your home content here */}
-                </section>
-
-                <section
-                    id="skills"
-                    style={{
-                        minHeight: '100vh',
-                        padding: '24px',
-                        background: colorBgContainer,
-                    }}
-                >
-                    <h1>Skills Section</h1>
-                    {/* Add your skills content here */}
-                </section>
-
-                <section
-                    id="projects"
-                    style={{
-                        minHeight: '100vh',
-                        padding: '24px',
-                        background: colorBgContainer,
-                    }}
-                >
-                    <h1>Projects Section</h1>
-                    {/* Add your projects content here */}
-                </section>
-
-                <section
-                    id="blog"
-                    style={{
-                        minHeight: '100vh',
-                        padding: '24px',
-                        background: colorBgContainer,
-                    }}
-                >
-                    <h1>Blog Section</h1>
-                    {/* Add your blog content here */}
-                </section>
-
-                <section
-                    id="contact"
-                    style={{
-                        minHeight: '100vh',
-                        padding: '24px',
-                        background: colorBgContainer,
-                    }}
-                >
-                    <h1>Contact Section</h1>
-                    {/* Add your contact content here */}
-                </section>
+                {items.map(item => (
+                    <section
+                        key={item.key}
+                        id={item.key}
+                        style={{
+                            minHeight: '100vh',
+                            padding: '24px',
+                            background: colorBgContainer,
+                        }}
+                    >
+                        <h1>{item.label} Section</h1>
+                        {/* Add your content here */}
+                    </section>
+                ))}
             </Content>
 
             <Footer style={{ textAlign: 'center' }}>
