@@ -1,7 +1,6 @@
-// SocialMediaLinks.jsx
 import React from 'react';
 import { Space } from 'antd';
-import { GithubOutlined, LinkedinOutlined, TwitterOutlined } from '@ant-design/icons';
+import {FacebookOutlined, GithubOutlined, LinkedinOutlined, TwitterOutlined} from '@ant-design/icons';
 
 const SocialMediaLinks = ({ links = {} }) => {
     const iconStyle = {
@@ -14,7 +13,7 @@ const SocialMediaLinks = ({ links = {} }) => {
     };
 
     return (
-        <Space size="large">
+        <Space direction="vertical" size="large">
             {links.github && (
                 <a href={links.github} target="_blank" rel="noopener noreferrer">
                     <GithubOutlined style={iconStyle} />
@@ -30,6 +29,12 @@ const SocialMediaLinks = ({ links = {} }) => {
                     <TwitterOutlined style={iconStyle} />
                 </a>
             )}
+            {links.facebook && (
+                <a href={links.facebook} target="_blank" rel="noopener noreferrer">
+                    <FacebookOutlined style={iconStyle} />
+                </a>
+            )}
+
         </Space>
     );
 };
