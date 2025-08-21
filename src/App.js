@@ -207,7 +207,7 @@ const App: React.FC = () => {
                     color: '#fff',
                     position: 'relative'
                 }}>
-                    Ant Design ©{new Date().getFullYear()} Created by Ant UED
+                    Ishika Gopie ©{new Date().getFullYear()} | All Rights Reserved
                 </Footer>
             </Layout>
         </Layout>
