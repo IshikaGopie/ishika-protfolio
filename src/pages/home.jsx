@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SocialMedia from '../components/atoms/socialMedia';
 import {DotLottieReact} from "@lottiefiles/dotlottie-react";
@@ -23,7 +22,8 @@ const Home = () => {
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                justifyContent: 'space-between',
+                justifyContent: 'flex-start', // Changed from space-between to flex-start
+                gap: '0px',
                 height: '60vh',
             }}>
                 <SocialMedia links={socialLinks} />
@@ -31,7 +31,7 @@ const Home = () => {
                     src={animation}
                     loop
                     autoplay
-                    style={{ width: '1000px', height: '700px' }}
+                    style={{ width: '900px', height: '900px' }}
                 />
             </div>
         </div>
