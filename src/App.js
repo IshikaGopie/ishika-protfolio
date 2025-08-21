@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Menu, theme, Avatar, Button } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import logo from './components/assets/logo.png';
 import logo2 from './components/assets/logo2.png';
+import './App.css';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -83,7 +83,11 @@ const App: React.FC = () => {
     };
 
     return (
-        <Layout>
+        <Layout style={{
+            background: '#141414',
+            minHeight: '100vh',
+            position: 'relative'
+        }}>
             {isMobile && (
                 <Sider
                     trigger={null}
@@ -121,7 +125,11 @@ const App: React.FC = () => {
                     />
                 </Sider>
             )}
-            <Layout>
+            <Layout style={{
+                background: '#141414',
+                minHeight: '100vh',
+                position: 'relative'
+            }}>
                 <Header style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -184,6 +192,7 @@ const App: React.FC = () => {
                                 padding: '24px',
                                 background: 'linear-gradient(to bottom, #141414 0%, #1f1f1f 50%, #262626 100%)',
                                 color: '#fff',
+                                position: 'relative'
                             }}
                         >
                             <h1>{item.label} Section</h1>
@@ -195,7 +204,8 @@ const App: React.FC = () => {
                 <Footer style={{
                     textAlign: 'center',
                     background: '#141414',
-                    color: '#fff'
+                    color: '#fff',
+                    position: 'relative'
                 }}>
                     Ant Design ©{new Date().getFullYear()} Created by Ant UED
                 </Footer>
