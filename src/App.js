@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Menu, theme, Avatar, Button } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import logo2 from './components/assets/logo2.png';
 import './App.css';
+
+import Home from './pages/home';
+import Skills from './pages/skills';
+import Projects from './pages/projects';
+import Blog from './pages/blog';
+import Contact from './pages/contact';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -10,26 +17,33 @@ const items = [
     {
         key: 'home',
         label: 'Home',
+        path: '/'
     },
     {
         key: 'skills',
         label: 'Skills',
+        path: '/skills'
     },
     {
         key: 'projects',
         label: 'Projects',
+        path: '/projects'
     },
     {
         key: 'blog',
         label: 'Blog',
+        path: '/blog'
     },
     {
         key: 'contact',
         label: 'Contact',
+        path: '/contact'
     },
 ];
 
-const App: React.FC = () => {
+const AppContent = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
@@ -59,6 +73,10 @@ const App: React.FC = () => {
 
                     if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                         setActiveSection(section.id);
+                        const item = items.find(i => i.key === section.id);
+                        if (item && location.pathname !== item.path) {
+                            navigate(item.path, { replace: true });
+                        }
                     }
                 }
             });
@@ -70,12 +88,16 @@ const App: React.FC = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [navigate, location.pathname]);
 
     const scrollToSection = (sectionId: string) => {
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
+            const item = items.find(i => i.key === sectionId);
+            if (item) {
+                navigate(item.path, { replace: true });
+            }
             if (isMobile) {
                 setCollapsed(true);
             }
@@ -110,8 +132,7 @@ const App: React.FC = () => {
                                 marginBottom: 0,
                                 marginTop: 65,
                             }}
-                        >
-                        </Avatar>
+                        />
                     </div>
                     <Menu
                         theme="dark"
@@ -176,8 +197,7 @@ const App: React.FC = () => {
                                     marginLeft: 24,
                                     backgroundColor: 'rgba(24,144,255,0)'
                                 }}
-                            >
-                            </Avatar>
+                            />
                         </>
                     )}
                 </Header>
@@ -195,8 +215,11 @@ const App: React.FC = () => {
                                 position: 'relative'
                             }}
                         >
-                            <h1>{item.label} Section</h1>
-                            {/* Add your content here */}
+                            {item.key === 'home' && <Home />}
+                            {item.key === 'skills' && <Skills />}
+                            {item.key === 'projects' && <Projects />}
+                            {item.key === 'blog' && <Blog />}
+                            {item.key === 'contact' && <Contact />}
                         </section>
                     ))}
                 </Content>
@@ -211,6 +234,14 @@ const App: React.FC = () => {
                 </Footer>
             </Layout>
         </Layout>
+    );
+};
+
+const App: React.FC = () => {
+    return (
+        <Router>
+            <AppContent />
+        </Router>
     );
 };
 
