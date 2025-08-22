@@ -31,9 +31,10 @@ const Home = () => {
                 autoplay
                 className="animation-container-mobile"
             />
-            <div className="intro-text">
-                <h1>Hello, I'm Ishika Gopie</h1>
-                <p>Welcome to my personal portfolio website!</p>
+            <div className="intro-text-mobile">
+                <h1>Hi there! 👋</h1>
+                <h2>I'm <span className="highlight">Ishika Gopie</span></h2>
+                <p>A passionate developer crafting digital experiences</p>
             </div>
             <SocialMedia links={socialLinks} layout= 'horizontal'/>
         </>
@@ -49,9 +50,11 @@ const Home = () => {
                 className="animation-container"
             />
             <div className="intro-text">
-                <h1>Hello, I'm Ishika Gopie</h1>
-                <p>Welcome to my personal portfolio website!</p>
+                <h1>Hi there! 👋</h1>
+                <h2>I'm <span className="highlight">Ishika Gopie</span></h2>
+                <p>A passionate developer crafting digital experiences</p>
             </div>
+
         </>
     );
 
