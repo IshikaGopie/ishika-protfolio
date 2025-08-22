@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Button, message } from 'antd';
+import { PrinterOutlined, FilePdfOutlined } from '@ant-design/icons';
 import SocialMedia from '../components/atoms/socialMedia';
-import {DotLottieReact} from "@lottiefiles/dotlottie-react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import animation from '../components/assets/tvR8GJuMTK.lottie';
 import './css/home.css';
+import resume from '../components/assets/resume.pdf';
 
 const Home = () => {
     const socialLinks = {
@@ -23,6 +26,27 @@ const Home = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const handlePrintResume = () => {
+        try {
+            window.open(resume, '_blank', 'width=800,height=600');
+        } catch (error) {
+            message.error('An error occurred while trying to print');
+        }
+    };
+
+    const ResumeButtons = () => (
+        <div className="resume-buttons">
+            <Button
+                type="primary"
+                icon={<PrinterOutlined />}
+                onClick={handlePrintResume}
+                className="print-resume-button"
+            >
+                {' Print Resume'}
+            </Button>
+        </div>
+    );
+
     const mobileLayout = (
         <>
             <DotLottieReact
@@ -35,14 +59,15 @@ const Home = () => {
                 <h1>Hi there! 👋</h1>
                 <h2>I'm <span className="highlight">Ishika Gopie</span></h2>
                 <p>A passionate developer crafting digital experiences</p>
+                <ResumeButtons />
             </div>
-            <SocialMedia links={socialLinks} layout= 'horizontal'/>
+            <SocialMedia links={socialLinks} layout='horizontal'/>
         </>
     );
 
     const desktopLayout = (
         <>
-            <SocialMedia links={socialLinks} layout= 'vertical'/>
+            <SocialMedia links={socialLinks} layout='vertical'/>
             <DotLottieReact
                 src={animation}
                 loop
@@ -53,8 +78,8 @@ const Home = () => {
                 <h1>Hi there! 👋</h1>
                 <h2>I'm <span className="highlight">Ishika Gopie</span></h2>
                 <p>A passionate developer crafting digital experiences</p>
+                <ResumeButtons />
             </div>
-
         </>
     );
 

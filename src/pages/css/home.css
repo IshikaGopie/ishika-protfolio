@@ -75,6 +75,23 @@
     margin-top: 1rem;
 }
 
+.print-resume-button {
+    margin-top: 1rem;
+    background: linear-gradient(120deg, #7928CA, #FF0080);
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+.print-resume-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(120deg, #6a23b3, #e5007a);
+}
+
+.intro-text .print-resume-button,
+.intro-text-mobile .print-resume-button {
+    display: block;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -85,6 +102,7 @@
         transform: translateY(0);
     }
 }
+
 @media (max-width: 768px) {
     .home-container {
         padding: 16px;
@@ -92,5 +110,9 @@
 
     .content-wrapper.mobile {
         gap: 1rem;
+    }
+
+    .intro-text-mobile .print-resume-button {
+        margin: 1rem auto;
     }
 }
