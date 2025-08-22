@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SocialMedia from '../components/atoms/socialMedia';
 import {DotLottieReact} from "@lottiefiles/dotlottie-react";
 import animation from '../components/assets/tvR8GJuMTK.lottie';
+import './css/home.css';
 
 const Home = () => {
     const socialLinks = {
@@ -11,28 +12,53 @@ const Home = () => {
         facebook: 'https://www.facebook.com/yourprofile'
     };
 
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const mobileLayout = (
+        <>
+            <DotLottieReact
+                src={animation}
+                loop
+                autoplay
+                className="animation-container-mobile"
+            />
+            <div className="intro-text">
+                <h1>Hello, I'm Ishika Gopie</h1>
+                <p>Welcome to my personal portfolio website!</p>
+            </div>
+            <SocialMedia links={socialLinks} layout= 'horizontal'/>
+        </>
+    );
+
+    const desktopLayout = (
+        <>
+            <SocialMedia links={socialLinks} layout= 'vertical'/>
+            <DotLottieReact
+                src={animation}
+                loop
+                autoplay
+                className="animation-container"
+            />
+            <div className="intro-text">
+                <h1>Hello, I'm Ishika Gopie</h1>
+                <p>Welcome to my personal portfolio website!</p>
+            </div>
+        </>
+    );
+
     return (
-        <div style={{
-            minHeight: '100vh',
-            padding: '24px',
-            background: 'linear-gradient(to bottom, #141414 0%, #1f1f1f 50%, #262626 100%)',
-            color: '#fff'
-        }}>
-            <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'flex-start', // Changed from space-between to flex-start
-                gap: '0px',
-                height: '60vh',
-            }}>
-                <SocialMedia links={socialLinks} />
-                <DotLottieReact
-                    src={animation}
-                    loop
-                    autoplay
-                    style={{ width: '900px', height: '900px' }}
-                />
+        <div className="home-container">
+            <div className={`content-wrapper ${isMobile ? 'mobile' : 'desktop'}`}>
+                {isMobile ? mobileLayout : desktopLayout}
             </div>
         </div>
     );

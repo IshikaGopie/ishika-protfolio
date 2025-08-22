@@ -2,7 +2,7 @@ import React from 'react';
 import { Space } from 'antd';
 import {FacebookOutlined, GithubOutlined, LinkedinOutlined, TwitterOutlined} from '@ant-design/icons';
 
-const SocialMediaLinks = ({ links = {} }) => {
+const SocialMediaLinks = ({ links = {} , layout = 'horizontal' }) => {
     const iconStyle = {
         fontSize: '24px',
         color: '#555',
@@ -13,7 +13,7 @@ const SocialMediaLinks = ({ links = {} }) => {
     };
 
     return (
-        <Space direction="vertical" size="large">
+        <Space direction= {layout === 'horizontal' ? 'horizontal' : 'vertical'} size="middle">
             {links.github && (
                 <a href={links.github} target="_blank" rel="noopener noreferrer">
                     <GithubOutlined style={iconStyle} />
