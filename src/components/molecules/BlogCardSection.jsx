@@ -2,20 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
 import BlogCard from '../atoms/blogCard';
+import './css/BlogCardSection.css';
 
 const BlogCardSection = ({ blogs }) => {
     return (
-        <Row gutter={[16, 16]} justify="center">
-            {blogs.map((blog, index) => (
-                <Col xs={24} sm={12} md={8} lg={6} key={index}>
-                    <BlogCard
-                        image={blog.image}
-                        title={blog.title}
-                        link={blog.link}
-                    />
-                </Col>
-            ))}
-        </Row>
+        <div className="blog-card-section">
+            <Row
+                gutter={[
+                    { xs: 16, sm: 24, md: 32 },
+                    { xs: 24, sm: 24, md: 32 }
+                ]}
+                justify="start"
+                className="blog-grid"
+            >
+                {blogs.map((blog, index) => (
+                    <Col
+                        key={index}
+                        xs={24}   // 1 per row on mobile
+                        sm={12}   // 2 per row on small screens
+                        md={8}    // 3 per row on medium screens
+                        lg={8}    // 3 per row on large screens
+                        xl={6}    // 4 per row on extra large screens
+                        className="blog-grid-item"
+                    >
+                        <div className="blog-card-wrapper">
+                            <BlogCard
+                                image={blog.image}
+                                title={blog.title}
+                                link={blog.link}
+                            />
+                        </div>
+                    </Col>
+                ))}
+            </Row>
+        </div>
     );
 };
 

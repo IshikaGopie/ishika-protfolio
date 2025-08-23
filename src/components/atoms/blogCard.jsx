@@ -5,34 +5,40 @@ import { Link } from 'react-router-dom';
 
 const BlogCard = ({ image, title, link }) => {
     return (
-        <Link to={link} style={{ textDecoration: 'none' }}>
+        <Link to={link} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
             <Card
                 hoverable
                 style={{
-                    width: 300,
-                    height: 350,
-                    margin: '16px',
+                    height: '100%',
                     background: 'linear-gradient(to bottom, #141414 0%, #1f1f1f 100%)',
                     border: '1px solid #303030',
                     borderRadius: '12px',
                     overflow: 'hidden',
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                    display: 'flex',
+                    flexDirection: 'column',
                 }}
                 bodyStyle={{
                     padding: '16px',
                     background: 'transparent',
+                    flex: '1',
+                    display: 'flex',
+                    flexDirection: 'column',
                 }}
                 cover={
                     <div style={{
-                        height: '200px',
+                        paddingTop: '66.67%', /* 3:2 Aspect Ratio */
+                        position: 'relative',
                         overflow: 'hidden',
-                        position: 'relative'
                     }}>
                         <img
                             alt={title}
                             src={image}
                             style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
                                 width: '100%',
                                 height: '100%',
                                 objectFit: 'cover',
@@ -50,25 +56,20 @@ const BlogCard = ({ image, title, link }) => {
                     </div>
                 }
             >
-                <Card.Meta
-                    title={
-                        <span
-                            style={{
-                                color: '#fff',
-                                fontSize: '18px',
-                                display: 'block',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                            }}
-                        >
-      {title}
-    </span>
-                    }
-                    style={{
-                        textAlign: 'center',
-                    }}
-                />
+                <h3 style={{
+                    margin: 0,
+                    color: '#ffffff',
+                    fontSize: '1.1rem',
+                    lineHeight: '1.4',
+                    marginTop: 'auto',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                }}>
+                    {title}
+                </h3>
             </Card>
         </Link>
     );
