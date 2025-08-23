@@ -2,7 +2,7 @@
   "name": "ishika-protfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://IshikaGopie.github.io/ishika-protfolio",
+  "homepage": ".",
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
     "@lottiefiles/dotlottie-react": "^0.15.1",
