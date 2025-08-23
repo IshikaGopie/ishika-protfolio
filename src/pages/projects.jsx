@@ -3,6 +3,7 @@ import React from 'react';
 import ProjectSection from "../components/molecules/ProjectSection";
 
 const Projects = () => {
+    // projects page
     return (
         <div style={{
             minHeight: '100vh',
