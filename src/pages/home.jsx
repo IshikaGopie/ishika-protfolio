@@ -6,6 +6,7 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import animation from '../components/assets/tvR8GJuMTK.lottie';
 import './css/home.css';
 import resume from '../components/assets/resume.pdf';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const socialLinks = {
@@ -14,6 +15,8 @@ const Home = () => {
         twitter: 'https://twitter.com/yourhandle',
         facebook: 'https://www.facebook.com/yourprofile'
     };
+
+    const navigate = useNavigate();
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -31,6 +34,13 @@ const Home = () => {
             window.open(resume, '_blank', 'width=800,height=600');
         } catch (error) {
             message.error('An error occurred while trying to print');
+        }
+    };
+
+    const handleContactClick = () => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
@@ -60,7 +70,10 @@ const Home = () => {
                 <h2>I'm <span className="highlight">Ishika Gopie</span></h2>
                 <p>A passionate developer crafting digital experiences</p>
                 <ResumeButtons />
+                <br/>
+                <Button type="primary" onClick={handleContactClick}>Contact Me</Button>
             </div>
+            <br/>
             <SocialMedia links={socialLinks} layout='horizontal'/>
         </>
     );
@@ -79,6 +92,8 @@ const Home = () => {
                 <h2>I'm <span className="highlight">Ishika Gopie</span></h2>
                 <p>A passionate developer crafting digital experiences</p>
                 <ResumeButtons />
+                <br/>
+                <Button type="primary" onClick={handleContactClick}>Contact Me</Button>
             </div>
         </>
     );
