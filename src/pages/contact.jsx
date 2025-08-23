@@ -1,18 +1,30 @@
-// pages/contact.tsx
 import React from 'react';
+import ContactForm from '../components/molecules/ContactForm';
+import 'antd/dist/reset.css';
 
-const Contact = () => {
+const App = () => {
+    const handleSubmit = async (values) => {
+        console.log('Form values:', values);
+    };
+
     return (
-        <div style={{
-            minHeight: '100vh',
-            padding: '24px',
-            background: 'linear-gradient(to bottom, #141414 0%, #1f1f1f 50%, #262626 100%)',
-            color: '#fff'
-        }}>
-            <h1>Contact</h1>
-            {/* Add your contact content here */}
+        <div style={{ padding: '24px', maxWidth: '800px', margin: '0 auto' }}>
+            <h1 className="highlight" style={{
+                fontSize: '2.5rem',
+                marginBottom: '2rem',
+                textAlign: 'center',
+                animation: 'fadeIn 1s ease-in',
+                background: 'linear-gradient(120deg, #7928CA, #FF0080)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+            }}>
+                Contact
+            </h1>
+
+            <ContactForm onSubmit={handleSubmit} />
         </div>
     );
 };
 
-export default Contact;
+export default App;

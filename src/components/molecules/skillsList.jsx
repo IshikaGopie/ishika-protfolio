@@ -33,7 +33,7 @@ const SkillsList = ({ size = 100 }) => {
         { icon: <SqlIcon size={size} />, name: 'SQL', url: 'https://www.w3schools.com/sql' },
         { icon: <GitIcon size={size} />, name: 'Git', url: 'https://git-scm.com' },
         { icon: <GraphIcon size={size} />, name: 'GraphQL', url: 'https://graphql.org' },
-        { icon: <SpringIcon size={size} />, name: 'Spring', url: 'https://spring.io' },
+        { icon: <SpringIcon size={size} />, name: 'SpringBoot', url: 'https://spring.io' },
         { icon: <FastAPIIcon size={size} />, name: 'FastAPI', url: 'https://fastapi.tiangolo.com' },
         { icon: <FlaskIcon size={size} />, name: 'Flask', url: 'https://flask.palletsprojects.com' },
         { icon: <NodeIcon size={size} />, name: 'Node JS', url: 'https://nodejs.org' },
