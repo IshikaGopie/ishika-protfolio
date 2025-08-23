@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Menu, theme, Avatar, Button } from 'antd';
+import { Layout, Menu, Avatar, Button } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { BrowserRouter as Router, useNavigate, useLocation } from 'react-router-dom';
 import logo2 from './components/assets/logo2.png';
@@ -44,8 +44,6 @@ const items = [
 const AppContent = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const {
-    } = theme.useToken();
 
     const [activeSection, setActiveSection] = useState('home');
     const [collapsed, setCollapsed] = useState(true);
