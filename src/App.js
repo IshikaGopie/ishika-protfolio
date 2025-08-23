@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Menu, theme, Avatar, Button } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, useNavigate, useLocation } from 'react-router-dom';
 import logo2 from './components/assets/logo2.png';
 import './App.css';
 
@@ -45,7 +45,6 @@ const AppContent = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const {
-        token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
     const [activeSection, setActiveSection] = useState('home');

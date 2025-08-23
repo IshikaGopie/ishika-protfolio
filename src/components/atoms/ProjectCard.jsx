@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Card, Row, Col } from 'antd';
+import { Card } from 'antd';
 import PropTypes from 'prop-types';
 
 const ProjectCard = ({ title, description, imageUrl, projectUrl }) => {
@@ -62,7 +62,7 @@ const ProjectCard = ({ title, description, imageUrl, projectUrl }) => {
                             e.target.style.borderBottom = '2px solid #40a9ff'; // Show underline on hover
                         }}
                         onMouseLeave={(e) => {
-                            e.target.style.color = '#1890ff'; // Return to original color
+                            e.target.style.color = '#1890ff';
                             e.target.style.borderBottom = '2px solid transparent'; // Hide underline
                         }}
                     >

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Button, message } from 'antd';
-import { PrinterOutlined, FilePdfOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { PrinterOutlined } from '@ant-design/icons';
 import SocialMedia from '../components/atoms/socialMedia';
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import animation from '../components/assets/tvR8GJuMTK.lottie';
 import './css/home.css';
 import resume from '../components/assets/resume.pdf';
-import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const socialLinks = {
@@ -15,8 +14,6 @@ const Home = () => {
         twitter: 'https://twitter.com/yourhandle',
         facebook: 'https://www.facebook.com/yourprofile'
     };
-
-    const navigate = useNavigate();
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -33,7 +30,7 @@ const Home = () => {
         try {
             window.open(resume, '_blank', 'width=800,height=600');
         } catch (error) {
-            message.error('An error occurred while trying to print');
+            console.error('Error opening resume:', error);
         }
     };
 
