@@ -19,13 +19,7 @@ const BlogCard = ({ image, title, link }) => {
                     display: 'flex',
                     flexDirection: 'column',
                 }}
-                bodyStyle={{
-                    padding: '16px',
-                    background: 'transparent',
-                    flex: '1',
-                    display: 'flex',
-                    flexDirection: 'column',
-                }}
+
                 cover={
                     <div style={{
                         paddingTop: '66.67%', /* 3:2 Aspect Ratio */

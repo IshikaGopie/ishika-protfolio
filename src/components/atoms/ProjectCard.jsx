@@ -57,14 +57,6 @@ const ProjectCard = ({ title, description, imageUrl, projectUrl }) => {
                             transition: 'all 0.3s ease',
                             borderBottom: '2px solid transparent', // Add invisible border
                         }}
-                        onMouseEnter={(e) => {
-                            e.target.style.color = '#40a9ff'; // Lighter blue on hover
-                            e.target.style.borderBottom = '2px solid #40a9ff'; // Show underline on hover
-                        }}
-                        onMouseLeave={(e) => {
-                            e.target.style.color = '#1890ff';
-                            e.target.style.borderBottom = '2px solid transparent'; // Hide underline
-                        }}
                     >
                         {title}
                     </a>
