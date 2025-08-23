@@ -1,0 +1,111 @@
+.contact-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 24px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.contact-title {
+    font-size: 2.5rem !important;
+    margin-bottom: 2rem !important;
+    text-align: left !important;
+    animation: fadeIn 1s ease-in !important;
+    background: linear-gradient(120deg, #7928CA, #FF0080) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    width: 100% !important;
+    padding: 0 !important;
+}
+
+.form-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form-wrapper {
+    flex: 1;
+}
+
+.personal-info-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (min-width: 992px) {
+    .contact-content {
+        flex-direction: row;
+        gap: 4rem;
+    }
+
+    .personal-info-wrapper {
+        position: sticky;
+        top: 2rem;
+        align-self: flex-start;
+    }
+}
+
+.contact-title {
+    font-size: 2.5rem !important;
+    margin-bottom: 2rem !important;
+    text-align: center !important;
+    animation: fadeIn 1s ease-in !important;
+    background: linear-gradient(120deg, #7928CA, #FF0080) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    width: 100% !important;
+    padding: 0 !important;
+}
+
+.form-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Force form alignment */
+.ant-form {
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+.ant-form-item {
+    text-align: left !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+.ant-form-item-label {
+    text-align: left !important;
+}
+
+.ant-form-item-control {
+    text-align: left !important;
+    max-width: 100% !important;
+}
+
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-input-textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+}

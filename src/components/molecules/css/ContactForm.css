@@ -1,5 +1,5 @@
 .contact-form {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 24px;
     border-radius: 8px;
@@ -45,7 +45,7 @@
 
 .ant-btn.ant-btn-primary:hover,
 .ant-btn.ant-btn-primary:focus {
-    background: linear-gradient(45deg, #FF8E8E, #7FE0D9);
+    background: linear-gradient(120deg, #7928CA, #FF0080);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }

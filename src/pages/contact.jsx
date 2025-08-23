@@ -1,30 +1,29 @@
 import React from 'react';
 import ContactForm from '../components/molecules/ContactForm';
+import PersonalInfo from '../components/molecules/PersonalInfo';
 import 'antd/dist/reset.css';
+import './css/contact.css';
 
-const App = () => {
-    const handleSubmit = async (values) => {
+const Contact = () => {
+    const handleSubmit = (values) => {
         console.log('Form values:', values);
+        // Handle form submission here
     };
 
     return (
-        <div style={{ padding: '24px', maxWidth: '800px', margin: '0 auto' }}>
-            <h1 className="highlight" style={{
-                fontSize: '2.5rem',
-                marginBottom: '2rem',
-                textAlign: 'center',
-                animation: 'fadeIn 1s ease-in',
-                background: 'linear-gradient(120deg, #7928CA, #FF0080)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-            }}>
-                Contact
-            </h1>
+        <div className="contact-container">
+            <h1 className="contact-title">Get In Touch</h1>
+            <div className="contact-content">
+                <div className="personal-info-wrapper">
+                    <PersonalInfo />
+                </div>
+                <div className="form-wrapper">
+                    <ContactForm onSubmit={handleSubmit} />
+                </div>
 
-            <ContactForm onSubmit={handleSubmit} />
+            </div>
         </div>
     );
 };
 
-export default App;
+export default Contact;
