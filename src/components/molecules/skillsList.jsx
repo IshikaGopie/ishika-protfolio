@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/skillList.css';
 import {
     HtmlIcon,
     CssIcon,
@@ -38,17 +39,13 @@ const SkillsList = ({ size = 100 }) => {
             width: '100%',
         }}>
             {skills.map((skill, index) => (
-                <div
-                    key={index}
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        gap: '8px'
-                    }}
-                >
-                    {skill.icon}
-                    <span>{skill.name}</span>
+                <div key={index} className="skill-item">
+                    <div className="skill-icon">
+                        {skill.icon}
+                    </div>
+                    <span className="skill-name">
+                        {skill.name}
+                    </span>
                 </div>
             ))}
         </div>

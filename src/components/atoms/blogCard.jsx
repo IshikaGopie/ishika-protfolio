@@ -51,7 +51,20 @@ const BlogCard = ({ image, title, link }) => {
                 }
             >
                 <Card.Meta
-                    title={<span style={{ color: '#fff', fontSize: '18px' }}>{title}</span>}
+                    title={
+                        <span
+                            style={{
+                                color: '#fff',
+                                fontSize: '18px',
+                                display: 'block',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                            }}
+                        >
+      {title}
+    </span>
+                    }
                     style={{
                         textAlign: 'center',
                     }}

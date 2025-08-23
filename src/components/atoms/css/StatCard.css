@@ -1,5 +1,5 @@
 .stat-card {
-    background: #292525;
+    background: linear-gradient(145deg, rgba(25, 144, 255, 0.1), rgba(38, 38, 38, 0.1));
     border-radius: 12px;
     padding: 24px;
     text-align: center;

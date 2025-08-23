@@ -1,0 +1,29 @@
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.skill-item:hover {
+    transform: scale(1.1);
+}
+
+.skill-icon {
+    transition: filter 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+    filter: drop-shadow(0 0 10px rgba(0, 123, 255, 0.5));
+}
+
+.skill-name {
+    transition: color 0.3s ease;
+}
+
+.skill-item:hover .skill-name {
+    color: #007bff;
+}
