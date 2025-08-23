@@ -21,7 +21,7 @@ const PersonalInfo = ({
                 )}
             </div>
             <div className="info-content">
-                <h2 className="name">Ishika Gopie</h2>
+                <h2 className="name"><b>Ishika Gopie</b></h2>
                 <p className="summary">{summary}</p>
                 <div className="contact-info">
                     <div className="contact-item">
