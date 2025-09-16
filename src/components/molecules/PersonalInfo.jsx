@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaEnvelope, FaPhone, FaUser } from 'react-icons/fa';
+import { FaEnvelope, FaUser } from 'react-icons/fa';
 import './css/Personalnfo.css';
 import me from '../assets/me.jpeg';
 

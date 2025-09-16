@@ -5,9 +5,7 @@ import {
     MobileOutlined,
     CloudOutlined,
     ApiOutlined,
-    ToolOutlined,
     ExperimentOutlined,
-    SafetyOutlined,
     RocketOutlined,
 } from '@ant-design/icons';
 import './css/services.css';
