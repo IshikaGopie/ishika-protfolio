@@ -6,8 +6,8 @@ import me from '../assets/me.jpeg';
 const PersonalInfo = ({
                           avatar = me,
                           summary = 'A passionate developer with a keen eye for design and problem-solving.',
-                          email = 'ishikagopie123@gmail.com',
-                          phone = '+1 (868) 714-1623'
+                          email = 'ishikagopie123@gmail.com'
+                          //phone = ''
                       }) => {
     return (
         <div className="personal-info">
@@ -28,10 +28,10 @@ const PersonalInfo = ({
                         <FaEnvelope className="contact-icon" />
                         <a href={`mailto:${email}`} className="contact-link">{email}</a>
                     </div>
-                    <div className="contact-item">
-                        <FaPhone className="contact-icon" />
-                        <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="contact-link">{phone}</a>
-                    </div>
+                    {/*<div className="contact-item">*/}
+                    {/*    <FaPhone className="contact-icon" />*/}
+                    {/*    <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="contact-link">{phone}</a>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </div>

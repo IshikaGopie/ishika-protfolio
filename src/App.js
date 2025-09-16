@@ -10,6 +10,7 @@ import Skills from './pages/skills';
 import Projects from './pages/projects';
 import Blog from './pages/blog';
 import Contact from './pages/contact';
+import Services from './pages/services';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -23,6 +24,11 @@ const items = [
         key: 'skills',
         label: 'Skills',
         path: '/skills'
+    },
+    {
+        key: 'services',
+        label: 'Services',
+        path: '/services'
     },
     {
         key: 'projects',
@@ -214,6 +220,7 @@ const AppContent = () => {
                         >
                             {item.key === 'home' && <Home />}
                             {item.key === 'skills' && <Skills />}
+                            {item.key === 'services' && <Services />}
                             {item.key === 'projects' && <Projects />}
                             {item.key === 'blog' && <Blog />}
                             {item.key === 'contact' && <Contact />}
