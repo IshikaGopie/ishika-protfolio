@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Row, Col, Card, Tag, Button } from 'antd';
+import { Row, Col, Card, Tag } from 'antd';
 import {
     CodeOutlined,
     MobileOutlined,
@@ -73,6 +73,9 @@ const Services = () => {
         experiments: 'linear-gradient(45deg, #6A4C93, #FC4445)',
     };
 
+    // Track which card is currently hovered
+    const [hoveredCardKey, setHoveredCardKey] = useState(null);
+
     // Scroll animation
     const [visibleCards, setVisibleCards] = useState([]);
     const cardRefs = useRef({});
@@ -120,14 +123,13 @@ const Services = () => {
             </h1>
             <p style={{
                 textAlign: 'center',
-                color: '#bfbfbf',
+                color: '#ffffff',
                 marginBottom: '2rem',
                 fontSize: '1.35rem',
                 lineHeight: 1.6
             }}>
                 From idea to launch—scalable, accessible, and delightful products.
             </p>
-
 
             <Row gutter={[16, 16]}>
                 {services.map((svc) => (
@@ -139,55 +141,36 @@ const Services = () => {
                             bordered
                             style={{
                                 height: '100%',
-                                background: 'rgba(255,255,255,0.02)',
+                                background:
+                                    hoveredCardKey === svc.key
+                                        ? 'linear-gradient(120deg, #7928CA, #FF0080)'
+                                        : 'rgba(255,255,255,0.02)',
                                 borderColor: 'rgba(255,255,255,0.06)',
                                 cursor: 'pointer',
                                 transition: 'all 0.3s ease',
                             }}
-                            headStyle={{ color: '#fff' }}
+                            onMouseEnter={() => setHoveredCardKey(svc.key)}
+                            onMouseLeave={() => setHoveredCardKey(null)}
+                            headStyle={{ color: '#e3e2e4' }}
                             bodyStyle={{ color: '#d9d9d9' }}
                             title={
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span
-                      style={{
-                          fontSize: 24,
-                          background: serviceGradients[svc.key],
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent',
-                      }}
-                  >
-                    {svc.icon}
-                  </span>
+                                    <span
+                                        style={{
+                                            fontSize: 24,
+                                            background: serviceGradients[svc.key],
+                                            WebkitBackgroundClip: 'text',
+                                            WebkitTextFillColor: 'transparent',
+                                        }}
+                                    >
+                                        {svc.icon}
+                                    </span>
                                     <span style={{ color: '#fff' }}>{svc.title}</span>
                                 </div>
                             }
-                            actions={[
-                                <Button
-                                    key="inquire"
-                                    type="primary"
-                                    ghost
-                                    size="large"
-                                    block
-                                    style={{ fontSize: '1.1rem', padding: '10px 0' }}
-                                    href="#contact"
-                                >
-                                    Inquire
-                                </Button>
-                            ]}
-
-                            onMouseEnter={(e) => {
-                                const card = e.currentTarget;
-                                card.style.transform = 'translateY(-6px)';
-                                card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.5)';
-                            }}
-                            onMouseLeave={(e) => {
-                                const card = e.currentTarget;
-                                card.style.transform = 'translateY(0)';
-                                card.style.boxShadow = 'none';
-                            }}
                         >
                             <p style={{ marginBottom: 12, color: '#bfbfbf', lineHeight: 1.6 }}>{svc.summary}</p>
-                            <ul style={{ paddingLeft: 18, marginBottom: 12 }}>
+                            <ul style={{ paddingLeft: 18, marginBottom: 40 }}>
                                 {svc.bullets.map((b, idx) => (
                                     <li key={idx} style={{ marginBottom: 6 }}>
                                         {b}

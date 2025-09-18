@@ -12,7 +12,7 @@ const Skills = () => {
         }}>
             <h1 className="highlight" style={{
                 fontSize: '2.5rem',
-                marginBottom: '2rem',
+                marginBottom: '3rem',
                 textAlign: 'center',
                 animation: 'fadeIn 1s ease-in',
                 background: 'linear-gradient(120deg, #7928CA, #FF0080)',
@@ -23,8 +23,17 @@ const Skills = () => {
                 Skills and Technologies
             </h1>
 
-            <ExperienceSection />
-            <SkillsList size={50} />
+            <div
+                style={{
+                    marginBottom: '3rem',
+                }}
+            >
+                <ExperienceSection />
+            </div>
+
+            <div>
+                <SkillsList size={75} />
+            </div>
         </div>
     );
 };
