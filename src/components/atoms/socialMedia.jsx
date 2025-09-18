@@ -1,6 +1,6 @@
 import React from 'react';
 import { Space } from 'antd';
-import {FacebookOutlined, GithubOutlined, LinkedinOutlined, TwitterOutlined} from '@ant-design/icons';
+import { GithubOutlined, LinkedinOutlined} from '@ant-design/icons';
 
 const SocialMediaLinks = ({ links = {} , layout = 'horizontal' }) => {
     const iconStyle = {
