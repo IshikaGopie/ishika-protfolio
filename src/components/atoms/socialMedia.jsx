@@ -4,7 +4,7 @@ import {FacebookOutlined, GithubOutlined, LinkedinOutlined, TwitterOutlined} fro
 
 const SocialMediaLinks = ({ links = {} , layout = 'horizontal' }) => {
     const iconStyle = {
-        fontSize: '24px',
+        fontSize: '30px',
         color: '#555',
         transition: 'color 0.3s',
         '&:hover': {
@@ -24,17 +24,6 @@ const SocialMediaLinks = ({ links = {} , layout = 'horizontal' }) => {
                     <LinkedinOutlined style={iconStyle} />
                 </a>
             )}
-            {links.twitter && (
-                <a href={links.twitter} target="_blank" rel="noopener noreferrer">
-                    <TwitterOutlined style={iconStyle} />
-                </a>
-            )}
-            {links.facebook && (
-                <a href={links.facebook} target="_blank" rel="noopener noreferrer">
-                    <FacebookOutlined style={iconStyle} />
-                </a>
-            )}
-
         </Space>
     );
 };

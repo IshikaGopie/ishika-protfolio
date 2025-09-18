@@ -11,8 +11,6 @@ const Home = () => {
     const socialLinks = {
         github: 'https://github.com/IshikaGopie',
         linkedin: 'https://www.linkedin.com/in/ishika-gopie-436000244/',
-        twitter: 'https://twitter.com/yourhandle',
-        facebook: 'https://www.facebook.com/yourprofile'
     };
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -65,7 +63,7 @@ const Home = () => {
             <div className="intro-text-mobile">
                 <h1>Hi there! 👋</h1>
                 <h2>I'm <span className="highlight">Ishika Gopie</span></h2>
-                <p>A passionate developer crafting digital experiences</p>
+                <p>I’m a problem-solving, efficient software developer with 3+ years of experience, currently in the final year of my MSc in Data Science. I specialize in full-stack development, with a strong passion for backend work, and I’m confident working with Go, Vue, React, JavaScript, Python and much more. I thrive on building robust, data-driven solutions and am passionate about creating impactful software that makes a difference. </p>
                 <ResumeButtons />
                 <br/>
                 <Button type="primary" onClick={handleContactClick}>Contact Me</Button>
@@ -87,11 +85,12 @@ const Home = () => {
             <div className="intro-text">
                 <h1>Hi there! 👋</h1>
                 <h2>I'm <span className="highlight">Ishika Gopie</span></h2>
-                <p>A passionate developer crafting digital experiences</p>
+                <p>I’m a problem-solving, efficient software developer with 3+ years of experience, currently in the final year of my MSc in Data Science. I specialize in full-stack development, with a strong passion for backend work, and I’m confident working with Go, Vue, React, JavaScript, Python and much more. I thrive on building robust, data-driven solutions and am passionate about creating impactful software that makes a difference. </p>
                 <ResumeButtons />
                 <br/>
                 <Button type="primary" onClick={handleContactClick}>Contact Me</Button>
             </div>
+
         </>
     );
 
