@@ -34,6 +34,17 @@ const Blog = () => {
             }}>
                 Blogs
             </h1>
+            {blogs.length < 3 && (
+                <p style={{
+                    textAlign: 'center',
+                    fontSize: '1.2rem',
+                    color: '#ccc',
+                    marginBottom: '2rem',
+                    animation: 'fadeIn 1.5s ease-in',
+                }}>
+                    More exciting blogs are coming soon! Check back later for new content.
+                </p>
+            )}
             <BlogCardSection blogs={blogs} />
         </div>
     );
