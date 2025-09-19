@@ -179,7 +179,12 @@ const AppContent = () => {
                                     fontSize: '16px',
                                     width: 64,
                                     height: 64,
-                                    color: 'white'
+                                    color: 'white',
+                                    position: 'fixed',
+                                    top: 0,
+                                    right: collapsed ? 160 : (0),
+                                    zIndex: 1002,
+                                    transition: 'left 0.25s ease'
                                 }}
                             />
                             <div style={{ flex: 1 }} />
