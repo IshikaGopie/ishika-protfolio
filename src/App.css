@@ -5,3 +5,30 @@ html, body, #root {
     padding: 0;
     overscroll-behavior: none;
 }
+
+.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-dark .ant-menu-item-active,
+.ant-menu-dark .ant-menu-item:hover {
+    background-color: transparent !important;
+}
+
+.ant-menu-horizontal > .ant-menu-item::after,
+.ant-menu-horizontal > .ant-menu-submenu::after {
+    border-bottom: none !important;
+}
+
+.ant-menu .ant-menu-item-selected .ant-menu-title-content,
+.ant-menu .ant-menu-item-active .ant-menu-title-content,
+.ant-menu .ant-menu-item:hover .ant-menu-title-content {
+    background: linear-gradient(120deg, #7928CA, #FF0080);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+}
+
+.ant-menu-dark .ant-menu-item .ant-menu-title-content {
+    color: rgba(255, 255, 255, 0.85);
+}

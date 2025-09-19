@@ -7,6 +7,7 @@ import pokemonImage from '../assets/pokemon.png';
 import portfolioImage from '../assets/portfolio.png';
 import weos from '../assets/weos.png';
 import scopecast from '../assets/scopecast.png';
+import weos_mobile from '../assets/weos_mobile.png';
 
 
 const ProjectsSection = () => {
@@ -16,6 +17,8 @@ const ProjectsSection = () => {
         if (text.length <= max) return text;
         return text.slice(0, max - 1).trimEnd() + '…';
     };
+
+    const isMobile = window.innerWidth <= 768;
 
     const projects = [
         {
@@ -27,7 +30,7 @@ const ProjectsSection = () => {
         {
             title: 'WeOS',
             description: 'An open source framework for Go crated by Wepala Limited.',
-            imageUrl: weos,
+            imageUrl: isMobile ? weos_mobile : weos,
             projectUrl: 'https://github.com/wepala/weos/tree/v2'
         },
         {
