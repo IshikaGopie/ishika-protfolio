@@ -4,32 +4,61 @@ import ProjectCard from '../atoms/ProjectCard';
 import timeManagementImage from '../assets/timeManagement2.png';
 import hateCrimeImage from '../assets/hate crime.png';
 import pokemonImage from '../assets/pokemon.png';
+import portfolioImage from '../assets/portfolio.png';
+import weos from '../assets/weos.png';
+import scopecast from '../assets/scopecast.png';
+
 
 const ProjectsSection = () => {
+    // Helper: keep descriptions short and neat on cards
+    const truncate = (text, max = 120) => {
+        if (!text) return '';
+        if (text.length <= max) return text;
+        return text.slice(0, max - 1).trimEnd() + '…';
+    };
+
     const projects = [
         {
+            title: 'Portfolio Website',
+            description: 'A personal portfolio showcasing projects, skills, and experiences.',
+            imageUrl: portfolioImage,
+            projectUrl: 'https://github.com/IshikaGopie/ishika-protfolio'
+        },
+        {
+            title: 'WeOS',
+            description: 'An open source framework for Go crated by Wepala Limited.',
+            imageUrl: weos,
+            projectUrl: 'https://github.com/wepala/weos/tree/v2'
+        },
+        {
+            title: 'ScopeCast',
+            description: 'Data science research project on predicting software development effort from requirement complexity',
+            imageUrl: scopecast,
+            projectUrl: null
+        },
+        {
             title: 'Time Management App',
-            description: 'A productivity app designed to help users manage daily tasks with ease. Built with students in mind, it creates structured schedules to reduce procrastination and boost focus.',
+            description: 'A productivity app designed to help users manage daily tasks with ease.',
             imageUrl: timeManagementImage,
             projectUrl: 'https://github.com/IshikaGopie/Time-Management-Application-'
         },
         {
             title: 'Hate Crime Prediction System',
-            description: 'A data-driven project analyzing hate crime incidents using predictive modeling and visualizations. It uncovers hidden patterns, identifies at-risk groups, and provides an API to support policy, advocacy, and targeted interventions',
+            description: 'A data-driven project analyzing hate crime incidents using predictive modeling and visualizations.',
             imageUrl: hateCrimeImage,
-            projectUrl: 'https://github.com/UWI-Zess/COMP6940-Project'
+            projectUrl: 'https://comp-6940-project.vercel.app/'
         },
         {
-            title: 'Pokémon Cards',
-            description: 'A React application that allows users to browse, search, and filter Pok´emon Trading Card Game (TCG) cards using the Pok´emon TCG API. It features a user-friendly interface with card details, images, and search functionality.',
+            title: 'Pokémon Trading Cards Catalog',
+            description: 'A React application that allows users to browse, search, and filter Pokémon Trading Card Game (TCG) cards using the Pokémon TCG API. It features a user-friendly interface with card details, images, and search functionality.',
             imageUrl: pokemonImage,
             projectUrl: 'https://ishikagopie.github.io/comp-6300-a3/'
         }
     ];
 
     return (
-        <div style={{ padding: '20px' }}>
-            <Row gutter={[24, 24]}>
+        <div style={{ padding: '16px' }}>
+            <Row gutter={[16, 16]}>
                 {projects.map((project, index) => (
                     <Col
                         key={index}
@@ -37,10 +66,13 @@ const ProjectsSection = () => {
                         sm={12}
                         md={8}
                         lg={8}
+                        xl={8}
                     >
+                        {/* Compact wrapper: consistent, narrower width so cards feel neat */}
+                        {/* Removed the fixed width wrapper as Col handles responsiveness */}
                         <ProjectCard
                             title={project.title}
-                            description={project.description}
+                            description={truncate(project.description, 100)} // Adjusted max length
                             imageUrl={project.imageUrl}
                             projectUrl={project.projectUrl}
                         />
