@@ -15,21 +15,24 @@ const EducationExperience = () => {
             degree: 'MSc. Data Science',
             status: 'Part-time',
             years: '2023 - Present',
-            logo: <img src={uwi} alt="logo" style={{ width: 48, height: 48 }} />
+            logo: <img src={uwi} alt="logo" style={{ width: 48, height: 48 }} />,
+            url: 'https://sta.uwi.edu/fst/dcit/programmes/pg-DataScience'
         },
         {
             school: 'The University of the West Indies - St. Augustine',
             degree: 'BSc. Computer Science (special)',
             status: 'Full-time',
             years: '2019 - 2022',
-            logo:  <img src={uwi} alt="logo" style={{ width: 48, height: 48 }} />
+            logo: <img src={uwi} alt="logo" style={{ width: 48, height: 48 }} />,
+            url: 'https://sta.uwi.edu/fst/dcit/programmes/ug-css-2023'
         },
         {
             school: 'The University of the West Indies - St. Augustine',
             degree: 'N1 Pre-Science',
             status: 'Full-time',
             years: '2018 - 2019',
-            logo: < img src={uwi} alt="logo" style={{ width: 48, height: 48 }} />
+            logo: <img src={uwi} alt="logo" style={{ width: 48, height: 48 }} />,
+            url: 'https://sta.uwi.edu/fst/pre-science-n1-programme'
         },
     ];
 
@@ -40,6 +43,7 @@ const EducationExperience = () => {
             status: 'Full-time',
             years: 'September 2025 - Present',
             logo: <img src={miink} alt="logo" style={{ width: 48, height: 48 }} />,
+            url: 'https://mi-ink.com/services/'
         },
         {
             company: 'Wepala Limited',
@@ -47,6 +51,7 @@ const EducationExperience = () => {
             status: 'Full-time',
             years: 'May 2023 - August 2025',
             logo: <img src={wepala} alt="logo" style={{ width: 48, height: 48 }} />,
+            url: 'https://wepala.com/'
         }
     ];
 
@@ -80,10 +85,130 @@ const EducationExperience = () => {
         border: '1px solid #303030',
         color: '#fff',
         boxShadow: '0 8px 20px rgba(0,0,0,0.35)',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+};
+
+    const cardHoverStyle = {
+        transform: 'translateY(-4px)',
+        boxShadow: '0 12px 28px rgba(0,0,0,0.45)',
     };
 
     const metaTextStyle = { color: '#cfcfcf' };
     const labelStyle = { color: '#bfbfbf' };
+
+    const renderEducationCard = (item, idx) => (
+        <a
+            key={`edu-${idx}`}
+            href={item.url || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: 'block', textDecoration: 'none' }}
+            onMouseEnter={e => Object.assign(e.currentTarget.firstChild.style, cardHoverStyle)}
+            onMouseLeave={e => Object.assign(e.currentTarget.firstChild.style, {})}
+        >
+            <Card
+                hoverable
+                className="service-card in-view"
+                style={cardStyle}
+                headStyle={{ background: '#1f1f1f', borderBottom: '1px solid #303030' }}
+                bodyStyle={{ background: '#1f1f1f' }}
+                title={
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <Text style={{ color: '#fff', fontSize: 18, fontWeight: 600 }}>
+                            {item.school}
+                        </Text>
+                        <Text style={{ ...metaTextStyle, fontSize: 14 }}>{item.degree}</Text>
+                    </div>
+                }
+                extra={
+                    item.logo ? (
+                        item.logo
+                    ) : (
+                        <Avatar
+                            shape="square"
+                            size={48}
+                            style={{ background: '#2a2a2a', border: '1px solid #303030' }}
+                            icon={<ReadOutlined style={{ color: '#FF0080' }} />}
+                        />
+                    )
+                }
+            >
+                <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                        <Text style={labelStyle}>Years:</Text>
+                        <Text style={{ color: '#e8e8e8' }}>{item.years}</Text>
+                    </div>
+                    <Divider type="vertical" style={{ borderColor: '#303030' }} />
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                        <Text style={labelStyle}>Type:</Text>
+                        <Tag
+                            color={item.status === 'Full-time' ? 'magenta' : 'purple'}
+                            style={{ margin: 0, border: 'none' }}
+                        >
+                            {item.status}
+                        </Tag>
+                    </div>
+                </div>
+            </Card>
+        </a>
+    );
+
+    const renderExperienceCard = (item, idx) => (
+        <a
+            key={`exp-${idx}`}
+            href={item.url || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: 'block', textDecoration: 'none' }}
+            onMouseEnter={e => Object.assign(e.currentTarget.firstChild.style, cardHoverStyle)}
+            onMouseLeave={e => Object.assign(e.currentTarget.firstChild.style, {})}
+        >
+            <Card
+                hoverable
+                className="service-card in-view"
+                style={cardStyle}
+                headStyle={{ background: '#1f1f1f', borderBottom: '1px solid #303030' }}
+                bodyStyle={{ background: '#1f1f1f' }}
+                title={
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <Text style={{ color: '#fff', fontSize: 18, fontWeight: 600 }}>
+                            {item.company}
+                        </Text>
+                        <Text style={{ ...metaTextStyle, fontSize: 14 }}>{item.role}</Text>
+                    </div>
+                }
+                extra={
+                    item.logo ? (
+                        item.logo
+                    ) : (
+                        <Avatar
+                            shape="square"
+                            size={48}
+                            style={{ background: '#2a2a2a', border: '1px solid #303030' }}
+                            icon={<BankOutlined style={{ color: '#7928CA' }} />}
+                        />
+                    )
+                }
+            >
+                <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                        <Text style={labelStyle}>Years:</Text>
+                        <Text style={{ color: '#e8e8e8' }}>{item.years}</Text>
+                    </div>
+                    <Divider type="vertical" style={{ borderColor: '#303030' }} />
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                        <Text style={labelStyle}>Type:</Text>
+                        <Tag
+                            color={item.status === 'Full-time' ? 'magenta' : 'purple'}
+                            style={{ margin: 0, border: 'none' }}
+                        >
+                            {item.status}
+                        </Tag>
+                    </div>
+                </div>
+            </Card>
+        </a>
+    );
 
     return (
         <div style={containerStyle}>
@@ -97,52 +222,7 @@ const EducationExperience = () => {
                         <Title level={3} style={columnTitleStyle}>
                             Education
                         </Title>
-                        {education.map((item, idx) => (
-                            <Card
-                                key={`edu-${idx}`}
-                                hoverable
-                                style={cardStyle}
-                                headStyle={{ background: '#1f1f1f', borderBottom: '1px solid #303030' }}
-                                bodyStyle={{ background: '#1f1f1f' }}
-                                title={
-                                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                        <Text style={{ color: '#fff', fontSize: 18, fontWeight: 600 }}>
-                                            {item.school}
-                                        </Text>
-                                        <Text style={{ ...metaTextStyle, fontSize: 14 }}>{item.degree}</Text>
-                                    </div>
-                                }
-                                extra={
-                                    item.logo ? (
-                                        item.logo
-                                    ) : (
-                                        <Avatar
-                                            shape="square"
-                                            size={48}
-                                            style={{ background: '#2a2a2a', border: '1px solid #303030' }}
-                                            icon={<ReadOutlined style={{ color: '#FF0080' }} />}
-                                        />
-                                    )
-                                }
-                            >
-                                <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-                                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                                        <Text style={labelStyle}>Years:</Text>
-                                        <Text style={{ color: '#e8e8e8' }}>{item.years}</Text>
-                                    </div>
-                                    <Divider type="vertical" style={{ borderColor: '#303030' }} />
-                                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                                        <Text style={labelStyle}>Type:</Text>
-                                        <Tag
-                                            color={item.status === 'Full-time' ? 'magenta' : 'purple'}
-                                            style={{ margin: 0, border: 'none' }}
-                                        >
-                                            {item.status}
-                                        </Tag>
-                                    </div>
-                                </div>
-                            </Card>
-                        ))}
+                        {education.map(renderEducationCard)}
                     </Space>
                 </Col>
 
@@ -151,52 +231,7 @@ const EducationExperience = () => {
                         <Title level={3} style={columnTitleStyle}>
                             Experience
                         </Title>
-                        {experience.map((item, idx) => (
-                            <Card
-                                key={`exp-${idx}`}
-                                hoverable
-                                style={cardStyle}
-                                headStyle={{ background: '#1f1f1f', borderBottom: '1px solid #303030' }}
-                                bodyStyle={{ background: '#1f1f1f' }}
-                                title={
-                                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                        <Text style={{ color: '#fff', fontSize: 18, fontWeight: 600 }}>
-                                            {item.company}
-                                        </Text>
-                                        <Text style={{ ...metaTextStyle, fontSize: 14 }}>{item.role}</Text>
-                                    </div>
-                                }
-                                extra={
-                                    item.logo ? (
-                                        item.logo
-                                    ) : (
-                                        <Avatar
-                                            shape="square"
-                                            size={48}
-                                            style={{ background: '#2a2a2a', border: '1px solid #303030' }}
-                                            icon={<BankOutlined style={{ color: '#7928CA' }} />}
-                                        />
-                                    )
-                                }
-                            >
-                                <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-                                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                                        <Text style={labelStyle}>Years:</Text>
-                                        <Text style={{ color: '#e8e8e8' }}>{item.years}</Text>
-                                    </div>
-                                    <Divider type="vertical" style={{ borderColor: '#303030' }} />
-                                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                                        <Text style={labelStyle}>Type:</Text>
-                                        <Tag
-                                            color={item.status === 'Full-time' ? 'magenta' : 'purple'}
-                                            style={{ margin: 0, border: 'none' }}
-                                        >
-                                            {item.status}
-                                        </Tag>
-                                    </div>
-                                </div>
-                            </Card>
-                        ))}
+                        {experience.map(renderExperienceCard)}
                     </Space>
                 </Col>
             </Row>
