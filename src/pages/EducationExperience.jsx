@@ -71,6 +71,9 @@ const EducationExperience = () => {
         backgroundClip: 'text',
     };
 
+    // Track hovered card (to apply gradient like Services)
+    const [hoveredKey, setHoveredKey] = React.useState(null);
+
     const columnTitleStyle = {
         fontSize: '1.5rem',
         margin: 0,
@@ -80,7 +83,7 @@ const EducationExperience = () => {
         backgroundClip: 'text',
     };
 
-    const cardStyle = {
+    const cardStyleBase = {
         background: '#1f1f1f',
         border: '1px solid #303030',
         color: '#fff',
@@ -93,122 +96,141 @@ const EducationExperience = () => {
         boxShadow: '0 12px 28px rgba(0,0,0,0.45)',
     };
 
+    // Compute final card style based on hover (gradient like Services page)
+    const getCardStyle = (key) => ({
+        ...cardStyleBase,
+        ...(hoveredKey === key
+            ? {
+                background: 'linear-gradient(120deg, #7928CA, #FF0080)',
+                ...cardHoverStyle,
+            }
+            : {}),
+    });
+
     const metaTextStyle = { color: '#cfcfcf' };
     const labelStyle = { color: '#bfbfbf' };
 
-    const renderEducationCard = (item, idx) => (
-        <a
-            key={`edu-${idx}`}
-            href={item.url || '#'}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: 'block', textDecoration: 'none' }}
-            onMouseEnter={e => Object.assign(e.currentTarget.firstChild.style, cardHoverStyle)}
-            onMouseLeave={e => Object.assign(e.currentTarget.firstChild.style, {})}
-        >
-            <Card
-                hoverable
-                className="service-card in-view"
-                style={cardStyle}
-                headStyle={{ background: '#1f1f1f', borderBottom: '1px solid #303030' }}
-                bodyStyle={{ background: '#1f1f1f' }}
-                title={
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <Text style={{ color: '#fff', fontSize: 18, fontWeight: 600 }}>
-                            {item.school}
-                        </Text>
-                        <Text style={{ ...metaTextStyle, fontSize: 14 }}>{item.degree}</Text>
-                    </div>
-                }
-                extra={
-                    item.logo ? (
-                        item.logo
-                    ) : (
-                        <Avatar
-                            shape="square"
-                            size={48}
-                            style={{ background: '#2a2a2a', border: '1px solid #303030' }}
-                            icon={<ReadOutlined style={{ color: '#FF0080' }} />}
-                        />
-                    )
-                }
+    const renderEducationCard = (item, idx) => {
+        const cardKey = `edu-${idx}`;
+        return (
+            <a
+                key={cardKey}
+                href={item.url || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'block', textDecoration: 'none' }}
             >
-                <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                        <Text style={labelStyle}>Years:</Text>
-                        <Text style={{ color: '#e8e8e8' }}>{item.years}</Text>
+                <Card
+                    id={cardKey}
+                    hoverable
+                    className="service-card in-view"
+                    style={getCardStyle(cardKey)}
+                    headStyle={{ background: 'transparent', borderBottom: '1px solid #303030', color: '#e3e2e4' }}
+                    bodyStyle={{ background: 'transparent', color: '#d9d9d9' }}
+                    title={
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <Text style={{ color: '#fff', fontSize: 18, fontWeight: 600 }}>
+                                {item.school}
+                            </Text>
+                            <Text style={{ ...metaTextStyle, fontSize: 14 }}>{item.degree}</Text>
+                        </div>
+                    }
+                    extra={
+                        item.logo ? (
+                            item.logo
+                        ) : (
+                            <Avatar
+                                shape="square"
+                                size={48}
+                                style={{ background: '#2a2a2a', border: '1px solid #303030' }}
+                                icon={<ReadOutlined style={{ color: '#FF0080' }} />}
+                            />
+                        )
+                    }
+                    onMouseEnter={() => setHoveredKey(cardKey)}
+                    onMouseLeave={() => setHoveredKey(null)}
+                >
+                    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                            <Text style={labelStyle}>Years:</Text>
+                            <Text style={{ color: '#e8e8e8' }}>{item.years}</Text>
+                        </div>
+                        <Divider type="vertical" style={{ borderColor: '#303030' }} />
+                        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                            <Text style={labelStyle}>Type:</Text>
+                            <Tag
+                                color={item.status === 'Full-time' ? 'magenta' : 'purple'}
+                                style={{ margin: 0, border: 'none' }}
+                            >
+                                {item.status}
+                            </Tag>
+                        </div>
                     </div>
-                    <Divider type="vertical" style={{ borderColor: '#303030' }} />
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                        <Text style={labelStyle}>Type:</Text>
-                        <Tag
-                            color={item.status === 'Full-time' ? 'magenta' : 'purple'}
-                            style={{ margin: 0, border: 'none' }}
-                        >
-                            {item.status}
-                        </Tag>
-                    </div>
-                </div>
-            </Card>
-        </a>
-    );
+                </Card>
+            </a>
+        );
+    };
 
-    const renderExperienceCard = (item, idx) => (
-        <a
-            key={`exp-${idx}`}
-            href={item.url || '#'}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: 'block', textDecoration: 'none' }}
-            onMouseEnter={e => Object.assign(e.currentTarget.firstChild.style, cardHoverStyle)}
-            onMouseLeave={e => Object.assign(e.currentTarget.firstChild.style, {})}
-        >
-            <Card
-                hoverable
-                className="service-card in-view"
-                style={cardStyle}
-                headStyle={{ background: '#1f1f1f', borderBottom: '1px solid #303030' }}
-                bodyStyle={{ background: '#1f1f1f' }}
-                title={
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <Text style={{ color: '#fff', fontSize: 18, fontWeight: 600 }}>
-                            {item.company}
-                        </Text>
-                        <Text style={{ ...metaTextStyle, fontSize: 14 }}>{item.role}</Text>
-                    </div>
-                }
-                extra={
-                    item.logo ? (
-                        item.logo
-                    ) : (
-                        <Avatar
-                            shape="square"
-                            size={48}
-                            style={{ background: '#2a2a2a', border: '1px solid #303030' }}
-                            icon={<BankOutlined style={{ color: '#7928CA' }} />}
-                        />
-                    )
-                }
+    const renderExperienceCard = (item, idx) => {
+        const cardKey = `exp-${idx}`;
+        return (
+            <a
+                key={cardKey}
+                href={item.url || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'block', textDecoration: 'none' }}
             >
-                <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                        <Text style={labelStyle}>Years:</Text>
-                        <Text style={{ color: '#e8e8e8' }}>{item.years}</Text>
+                <Card
+                    id={cardKey}
+                    hoverable
+                    className="service-card in-view"
+                    style={getCardStyle(cardKey)}
+                    headStyle={{ background: 'transparent', borderBottom: '1px solid #303030', color: '#e3e2e4' }}
+                    bodyStyle={{ background: 'transparent', color: '#d9d9d9' }}
+                    title={
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <Text style={{ color: '#fff', fontSize: 18, fontWeight: 600 }}>
+                                {item.company}
+                            </Text>
+                            <Text style={{ ...metaTextStyle, fontSize: 14 }}>{item.role}</Text>
+                        </div>
+                    }
+                    extra={
+                        item.logo ? (
+                            item.logo
+                        ) : (
+                            <Avatar
+                                shape="square"
+                                size={48}
+                                style={{ background: '#2a2a2a', border: '1px solid #303030' }}
+                                icon={<BankOutlined style={{ color: '#7928CA' }} />}
+                            />
+                        )
+                    }
+                    onMouseEnter={() => setHoveredKey(cardKey)}
+                    onMouseLeave={() => setHoveredKey(null)}
+                >
+                    <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                            <Text style={labelStyle}>Years:</Text>
+                            <Text style={{ color: '#e8e8e8' }}>{item.years}</Text>
+                        </div>
+                        <Divider type="vertical" style={{ borderColor: '#303030' }} />
+                        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                            <Text style={labelStyle}>Type:</Text>
+                            <Tag
+                                color={item.status === 'Full-time' ? 'magenta' : 'purple'}
+                                style={{ margin: 0, border: 'none' }}
+                            >
+                                {item.status}
+                            </Tag>
+                        </div>
                     </div>
-                    <Divider type="vertical" style={{ borderColor: '#303030' }} />
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                        <Text style={labelStyle}>Type:</Text>
-                        <Tag
-                            color={item.status === 'Full-time' ? 'magenta' : 'purple'}
-                            style={{ margin: 0, border: 'none' }}
-                        >
-                            {item.status}
-                        </Tag>
-                    </div>
-                </div>
-            </Card>
-        </a>
-    );
+                </Card>
+            </a>
+        );
+    };
 
     return (
         <div style={containerStyle}>
