@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Layout, Menu, Avatar, Button } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { BrowserRouter as Router, useNavigate, useLocation } from 'react-router-dom';
-import logo2 from './components/assets/logo2.png';
+import logo2 from './components/assets/me.jpeg';
 import './App.css';
 
 import Home from './pages/home';
@@ -11,6 +11,7 @@ import Projects from './pages/projects';
 import Blog from './pages/blog';
 import Contact from './pages/contact';
 import Services from './pages/services';
+import EducationExperience from './pages/EducationExperience';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -24,6 +25,11 @@ const items = [
         key: 'skills',
         label: 'Skills',
         path: '/skills'
+    },
+    {
+        key: 'educationAndExperience',
+        label: 'Education & Experience',
+        path: '/educationAndExperience'
     },
     {
         key: 'services',
@@ -220,6 +226,7 @@ const AppContent = () => {
                         >
                             {item.key === 'home' && <Home />}
                             {item.key === 'skills' && <Skills />}
+                            {item.key === 'educationAndExperience' && <EducationExperience />}
                             {item.key === 'services' && <Services />}
                             {item.key === 'projects' && <Projects />}
                             {item.key === 'blog' && <Blog />}
